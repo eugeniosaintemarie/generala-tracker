@@ -102,7 +102,7 @@ export default function Home() {
         <div className="space-y-4">
           <div className="space-y-2">
             <div className="space-y-1">
-              <p className="text-sm text-muted-foreground">Ingresa los jugadores (separados por espacios o enters)</p>
+              <p className="text-sm text-muted-foreground">Jugadores (separados por espacios o enters):</p>
             </div>
             <Input
               id="players"
