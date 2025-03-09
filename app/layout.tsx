@@ -4,6 +4,7 @@ import { Inter } from "next/font/google"
 import "./globals.css"
 import { ThemeProvider } from "@/components/theme-provider"
 import Script from "next/script"
+import Footer from "@/components/footer"
 
 const inter = Inter({ subsets: ["latin"] })
 
@@ -27,7 +28,10 @@ export default function RootLayout({
       </head>
       <body className={inter.className}>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
-          {children}
+          <div className="min-h-screen flex flex-col">
+            {children}
+            <Footer />
+          </div>
         </ThemeProvider>
         <Script id="register-sw" strategy="afterInteractive">
           {`
