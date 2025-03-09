@@ -21,7 +21,6 @@ export default function manifest(): MetadataRoute.Manifest {
         type: "image/png",
       },
     ],
-    // Configuración para soporte offline
     orientation: "portrait",
     scope: "/",
     prefer_related_applications: false,

@@ -16,7 +16,6 @@ export default function Home() {
   const [showScoreTable, setShowScoreTable] = useState(false)
   const [showResetConfirm, setShowResetConfirm] = useState(false)
 
-  // Load game state from localStorage on initial render
   useEffect(() => {
     const savedGame = localStorage.getItem("generalaGame")
     if (savedGame) {
@@ -27,7 +26,6 @@ export default function Home() {
     }
   }, [])
 
-  // Save game state to localStorage whenever it changes
   useEffect(() => {
     if (players.length > 0) {
       localStorage.setItem(
@@ -44,8 +42,8 @@ export default function Home() {
   const handleStartGame = () => {
     if (playerInput.trim()) {
       const playerNames = playerInput
-        .replace(/\n/g, " ") // Replace all line breaks with spaces
-        .split(" ") // Split by spaces
+        .replace(/\n/g, " ")
+        .split(" ")
         .filter((name) => name.trim() !== "")
         .map((name) => name.trim())
 

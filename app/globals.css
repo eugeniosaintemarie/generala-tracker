@@ -75,7 +75,6 @@
   }
 }
 
-/* Ensure placeholder text wraps properly */
 .placeholder\:text-wrap::placeholder {
   text-wrap: wrap;
   white-space: normal;

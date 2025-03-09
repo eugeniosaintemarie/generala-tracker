@@ -1,6 +1,3 @@
-// Este archivo es necesario para registrar el service worker
-// que permitirá que la aplicación funcione offline
-
 export default function registerServiceWorker() {
   if (typeof window !== "undefined" && "serviceWorker" in navigator) {
     window.addEventListener("load", () => {
