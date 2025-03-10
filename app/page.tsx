@@ -7,7 +7,6 @@ import PlayerTurn from "@/components/player-turn"
 import ScoreTable from "@/components/score-table"
 import ConfirmDialog from "@/components/confirm-dialog"
 import Header from "@/components/header"
-import Footer from "@/components/footer"
 import type { Player, ScoreCategory } from "@/lib/types"
 
 export default function Home() {
@@ -97,9 +96,9 @@ export default function Home() {
   }
 
   return (
-    <div className="flex flex-col min-h-screen">
+    <div className="flex flex-col h-full">
       <Header />
-      <main className="container max-w-md mx-auto p-4 min-h-screen flex flex-col">
+      <main className="container max-w-md mx-auto p-4 flex-1 flex flex-col">
         <h1 className="text-2xl font-bold text-center mb-6">Generala tracker</h1>
 
         {!gameStarted ? (
@@ -160,7 +159,6 @@ export default function Home() {
           </div>
         )}
       </main>
-      <Footer />
     </div>
   )
 }

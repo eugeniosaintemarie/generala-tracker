@@ -28,7 +28,7 @@ export default function RootLayout({
       </head>
       <body className={inter.className}>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
-          <div className="min-h-screen flex flex-col">
+          <div className="flex flex-col min-h-screen">
             {children}
             <Footer />
           </div>
@@ -53,7 +53,3 @@ export default function RootLayout({
     </html>
   )
 }
-
-
-
-import './globals.css'
