@@ -95,6 +95,8 @@ export default function Home() {
   }
 
   return (
+  <div className="flex flex-col min-h-screen"></div>
+  <Header />
     <main className="container max-w-md mx-auto p-4 min-h-screen flex flex-col">
       <h1 className="text-2xl font-bold text-center mb-6">Generala tracker</h1>
 
@@ -156,6 +158,8 @@ export default function Home() {
         </div>
       )}
     </main>
+  <Footer />
+  </div >
   )
 }
 
