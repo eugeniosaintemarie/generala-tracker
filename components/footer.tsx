@@ -2,7 +2,7 @@ export default function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-primary text-primary-foreground p-4 mt-auto">
+    <footer className="bg-background text-muted-foreground p-4 mt-auto">
       <div className="container mx-auto">
         <p className="text-center">∃ugenio © {currentYear}</p>
       </div>

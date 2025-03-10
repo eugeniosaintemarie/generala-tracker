@@ -6,7 +6,6 @@ import { Input } from "@/components/ui/input"
 import PlayerTurn from "@/components/player-turn"
 import ScoreTable from "@/components/score-table"
 import ConfirmDialog from "@/components/confirm-dialog"
-import Header from "@/components/header"
 import type { Player, ScoreCategory } from "@/lib/types"
 
 export default function Home() {
@@ -97,7 +96,6 @@ export default function Home() {
 
   return (
     <div className="flex flex-col h-full">
-      <Header />
       <main className="container max-w-md mx-auto p-4 flex-1 flex flex-col">
         <h1 className="text-2xl font-bold text-center mb-6">Generala tracker</h1>
 
