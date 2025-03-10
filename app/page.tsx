@@ -6,6 +6,8 @@ import { Input } from "@/components/ui/input"
 import PlayerTurn from "@/components/player-turn"
 import ScoreTable from "@/components/score-table"
 import ConfirmDialog from "@/components/confirm-dialog"
+import Header from "@/components/header"
+import Footer from "@/components/footer"
 import type { Player, ScoreCategory } from "@/lib/types"
 
 export default function Home() {
@@ -95,71 +97,71 @@ export default function Home() {
   }
 
   return (
-  <div className="flex flex-col min-h-screen"></div>
-  <Header />
-    <main className="container max-w-md mx-auto p-4 min-h-screen flex flex-col">
-      <h1 className="text-2xl font-bold text-center mb-6">Generala tracker</h1>
+    <div className="flex flex-col min-h-screen">
+      <Header />
+      <main className="container max-w-md mx-auto p-4 min-h-screen flex flex-col">
+        <h1 className="text-2xl font-bold text-center mb-6">Generala tracker</h1>
 
-      {!gameStarted ? (
-        <div className="space-y-4">
-          <div className="space-y-2">
-            <div className="space-y-1">
-              <p className="text-sm text-muted-foreground">Jugadores (separados por espacios o enters):</p>
+        {!gameStarted ? (
+          <div className="space-y-4">
+            <div className="space-y-2">
+              <div className="space-y-1">
+                <p className="text-sm text-muted-foreground">Jugadores (separados por espacios o enters):</p>
+              </div>
+              <Input
+                id="players"
+                as="textarea"
+                className="min-h-[150px]"
+                value={playerInput}
+                onChange={(e) => setPlayerInput(e.target.value)}
+                placeholder="Messi DePaul Dybala Paredes..."
+              />
             </div>
-            <Input
-              id="players"
-              as="textarea"
-              className="min-h-[150px]"
-              value={playerInput}
-              onChange={(e) => setPlayerInput(e.target.value)}
-              placeholder="Messi DePaul Dybala Paredes..."
+            <Button onClick={handleStartGame} className="w-full">
+              Comenzar
+            </Button>
+          </div>
+        ) : (
+          <div className="flex-1 flex flex-col">
+            <PlayerTurn player={players[currentPlayerIndex]} onScoreSubmit={handleScoreSubmit} />
+
+            <div className="mt-auto pt-4">
+              <Button variant="outline" className="w-full" onClick={() => setShowScoreTable(!showScoreTable)}>
+                {showScoreTable ? "Ocultar tablero" : "Ver tablero"}
+              </Button>
+            </div>
+
+            {showScoreTable && (
+              <div className="fixed inset-0 bg-background/95 z-50 overflow-y-auto pt-16 pb-20 px-4">
+                <div className="max-w-md mx-auto">
+                  <ScoreTable
+                    players={players}
+                    updateScore={updatePlayerScore}
+                    onClose={() => setShowScoreTable(false)}
+                  />
+                </div>
+              </div>
+            )}
+
+            <div className="mt-4">
+              <Button variant="destructive" size="sm" onClick={() => setShowResetConfirm(true)} className="w-full">
+                Reiniciar
+              </Button>
+            </div>
+
+            <ConfirmDialog
+              open={showResetConfirm}
+              onOpenChange={setShowResetConfirm}
+              onConfirm={resetGame}
+              title="¿Seguro?"
+              confirmText="Sí"
+              cancelText="Cancelar"
             />
           </div>
-          <Button onClick={handleStartGame} className="w-full">
-            Comenzar
-          </Button>
-        </div>
-      ) : (
-        <div className="flex-1 flex flex-col">
-          <PlayerTurn player={players[currentPlayerIndex]} onScoreSubmit={handleScoreSubmit} />
-
-          <div className="mt-auto pt-4">
-            <Button variant="outline" className="w-full" onClick={() => setShowScoreTable(!showScoreTable)}>
-              {showScoreTable ? "Ocultar tablero" : "Ver tablero"}
-            </Button>
-          </div>
-
-          {showScoreTable && (
-            <div className="fixed inset-0 bg-background/95 z-50 overflow-y-auto pt-16 pb-20 px-4">
-              <div className="max-w-md mx-auto">
-                <ScoreTable
-                  players={players}
-                  updateScore={updatePlayerScore}
-                  onClose={() => setShowScoreTable(false)}
-                />
-              </div>
-            </div>
-          )}
-
-          <div className="mt-4">
-            <Button variant="destructive" size="sm" onClick={() => setShowResetConfirm(true)} className="w-full">
-              Reiniciar
-            </Button>
-          </div>
-
-          <ConfirmDialog
-            open={showResetConfirm}
-            onOpenChange={setShowResetConfirm}
-            onConfirm={resetGame}
-            title="¿Seguro?"
-            confirmText="Sí"
-            cancelText="Cancelar"
-          />
-        </div>
-      )}
-    </main>
-  <Footer />
-  </div >
+        )}
+      </main>
+      <Footer />
+    </div>
   )
 }
 
