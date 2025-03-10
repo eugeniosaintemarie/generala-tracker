@@ -1,26 +1,10 @@
-import { useEffect, useState } from 'react';
+"use client"
+
+import { useState } from 'react';
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
-  const [baseUrl, setBaseUrl] = useState('/');
-
-  useEffect(() => {
-    const fetchBaseUrl = async () => {
-      try {
-        const response = await fetch('https://raw.githubusercontent.com/eugeniosaintemarie/config-central/gh-pages/url.json');
-        if (response.ok) {
-          const data = await response.json();
-          if (data && data.baseURL) {
-            setBaseUrl(data.baseURL);
-          }
-        }
-      } catch (error) {
-        console.error('Error fetching base URL:', error);
-      }
-    };
-
-    fetchBaseUrl();
-  }, []);
+  const baseUrl = 'https://eugeniosaintemarie.github.io/';
 
   return (
     <footer className="bg-background text-muted-foreground p-4 mt-auto">
