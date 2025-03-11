@@ -141,18 +141,16 @@ export default function Home() {
               confirmText="Sí"
               cancelText="Cancelar"
             />
-          </div>
-        )}
-        
-        {gameStarted && (
-          <div className="mt-auto pt-8 pb-4">
-            <div className="space-y-3">
-              <Button variant="outline" className="w-full" onClick={() => setShowScoreTable(!showScoreTable)}>
-                {showScoreTable ? "Ocultar tablero" : "Ver tablero"}
-              </Button>
-              <Button variant="destructive" size="sm" onClick={() => setShowResetConfirm(true)} className="w-full">
-                Reiniciar
-              </Button>
+            
+            <div className="mt-auto sticky bottom-0 pt-4 pb-4 bg-background">
+              <div className="space-y-3">
+                <Button variant="outline" className="w-full" onClick={() => setShowScoreTable(!showScoreTable)}>
+                  {showScoreTable ? "Ocultar tablero" : "Ver tablero"}
+                </Button>
+                <Button variant="destructive" size="sm" onClick={() => setShowResetConfirm(true)} className="w-full">
+                  Reiniciar
+                </Button>
+              </div>
             </div>
           </div>
         )}

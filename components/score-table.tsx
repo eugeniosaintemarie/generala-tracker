@@ -93,7 +93,6 @@ export default function ScoreTable({ players, updateScore, onClose }: ScoreTable
     "full",
     "poker",
     "generala",
-    "generalaServida",
     "dobleGenerala",
   ]
 
