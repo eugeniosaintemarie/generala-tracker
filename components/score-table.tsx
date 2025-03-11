@@ -29,7 +29,6 @@ export default function ScoreTable({ players, updateScore, onClose }: ScoreTable
       full: "Full",
       poker: "Póker",
       generala: "Generala",
-      generalaServida: "Generala servida",
       dobleGenerala: "Generala doble",
     }
     return labels[category]
