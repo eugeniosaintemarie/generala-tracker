@@ -37,6 +37,7 @@ export default function PlayerTurn({ player, onScoreSubmit }: PlayerTurnProps) {
       full: "Full",
       poker: "Póker",
       generala: "Generala",
+      "": "",  // Empty option
       dobleGenerala: "Generala doble",
     }
     return labels[category]

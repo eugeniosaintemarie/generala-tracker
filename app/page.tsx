@@ -142,8 +142,8 @@ export default function Home() {
               cancelText="Cancelar"
             />
             
-            <div className="mt-auto sticky bottom-0 pt-4 pb-4 bg-background">
-              <div className="space-y-3">
+            <div className="flex-1 flex items-center justify-center py-8">
+              <div className="space-y-3 w-full">
                 <Button variant="outline" className="w-full" onClick={() => setShowScoreTable(!showScoreTable)}>
                   {showScoreTable ? "Ocultar tablero" : "Ver tablero"}
                 </Button>

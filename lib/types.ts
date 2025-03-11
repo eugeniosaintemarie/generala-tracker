@@ -9,6 +9,7 @@ export type ScoreCategory =
   | "full"
   | "poker"
   | "generala"
+  | ""
   | "dobleGenerala"
 
 export interface Player {
