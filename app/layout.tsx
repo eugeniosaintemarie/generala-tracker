@@ -5,6 +5,7 @@ import "./globals.css"
 import { ThemeProvider } from "@/components/theme-provider"
 import Script from "next/script"
 import Footer from "@/components/footer"
+import InstallPrompt from "./install-prompt"
 
 const inter = Inter({ subsets: ["latin"] })
 
@@ -34,6 +35,7 @@ export default function RootLayout({
           <div className="flex flex-col min-h-screen">
             {children}
             <Footer />
+            <InstallPrompt />
           </div>
         </ThemeProvider>
         <Script id="register-sw" strategy="afterInteractive">

@@ -3,7 +3,7 @@ import type { MetadataRoute } from "next"
 export default function manifest(): MetadataRoute.Manifest {
   return {
     name: "Generala tracker",
-    short_name: "Generala",
+    short_name: "Generala tracker",
     description: "Una aplicación para seguir puntuaciones en el juego de Generala",
     start_url: "/",
     display: "standalone",

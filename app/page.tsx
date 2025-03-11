@@ -144,10 +144,10 @@ export default function Home() {
             
             <div className="flex-1 flex items-end justify-center mb-auto">
               <div className="space-y-3 w-full my-8">
-                <Button variant="outline" className="w-full" onClick={() => setShowScoreTable(!showScoreTable)}>
+                <Button variant="outline" className="w-full rounded-lg border bg-card text-card-foreground shadow-sm" onClick={() => setShowScoreTable(!showScoreTable)}>
                   {showScoreTable ? "Ocultar tablero" : "Ver tablero"}
                 </Button>
-                <Button variant="destructive" size="sm" onClick={() => setShowResetConfirm(true)} className="w-full">
+                <Button variant="outline" size="sm" onClick={() => setShowResetConfirm(true)} className="w-full text-destructive border-destructive">
                   Reiniciar
                 </Button>
               </div>
