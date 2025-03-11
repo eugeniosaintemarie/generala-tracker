@@ -61,7 +61,6 @@ export default function Home() {
             full: null,
             poker: null,
             generala: null,
-            generalaServida: null,
             dobleGenerala: null,
           },
         }))
@@ -96,7 +95,7 @@ export default function Home() {
 
   return (
     <div className="flex flex-col h-full">
-      <main className="container max-w-md mx-auto p-4 flex-1 flex flex-col">
+      <main className="container max-w-md mx-auto p-4 pb-32 flex-1 flex flex-col">
         <h1 className="text-2xl font-bold text-center mb-6">Generala tracker</h1>
 
         {!gameStarted ? (
@@ -122,12 +121,6 @@ export default function Home() {
           <div className="flex-1 flex flex-col">
             <PlayerTurn player={players[currentPlayerIndex]} onScoreSubmit={handleScoreSubmit} />
 
-            <div className="mt-auto pt-4">
-              <Button variant="outline" className="w-full" onClick={() => setShowScoreTable(!showScoreTable)}>
-                {showScoreTable ? "Ocultar tablero" : "Ver tablero"}
-              </Button>
-            </div>
-
             {showScoreTable && (
               <div className="fixed inset-0 bg-background/95 z-50 overflow-y-auto pt-16 pb-20 px-4">
                 <div className="max-w-md mx-auto">
@@ -140,12 +133,6 @@ export default function Home() {
               </div>
             )}
 
-            <div className="mt-4">
-              <Button variant="destructive" size="sm" onClick={() => setShowResetConfirm(true)} className="w-full">
-                Reiniciar
-              </Button>
-            </div>
-
             <ConfirmDialog
               open={showResetConfirm}
               onOpenChange={setShowResetConfirm}
@@ -157,6 +144,19 @@ export default function Home() {
           </div>
         )}
       </main>
+
+      {gameStarted && (
+        <div className="fixed bottom-0 left-0 right-0 bg-background border-t p-4">
+          <div className="container max-w-md mx-auto space-y-3">
+            <Button variant="outline" className="w-full" onClick={() => setShowScoreTable(!showScoreTable)}>
+              {showScoreTable ? "Ocultar tablero" : "Ver tablero"}
+            </Button>
+            <Button variant="destructive" size="sm" onClick={() => setShowResetConfirm(true)} className="w-full">
+              Reiniciar
+            </Button>
+          </div>
+        </div>
+      )}
     </div>
   )
 }

@@ -3,10 +3,10 @@
 import { useState } from "react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
+import { Label } from "@/components/ui/label"
 import type { Player, ScoreCategory } from "@/lib/types"
+import { getCategoryOptions } from "@/lib/types"
 
 interface PlayerTurnProps {
   player: Player
@@ -15,13 +15,13 @@ interface PlayerTurnProps {
 
 export default function PlayerTurn({ player, onScoreSubmit }: PlayerTurnProps) {
   const [selectedCategory, setSelectedCategory] = useState<ScoreCategory | null>(null)
-  const [points, setPoints] = useState<string>("")
+  const [selectedPoints, setSelectedPoints] = useState<number | null>(null)
 
   const handleSubmit = () => {
-    if (selectedCategory && points) {
-      onScoreSubmit(selectedCategory, Number.parseInt(points, 10))
+    if (selectedCategory !== null && selectedPoints !== null) {
+      onScoreSubmit(selectedCategory, selectedPoints)
       setSelectedCategory(null)
-      setPoints("")
+      setSelectedPoints(null)
     }
   }
 
@@ -37,7 +37,6 @@ export default function PlayerTurn({ player, onScoreSubmit }: PlayerTurnProps) {
       full: "Full",
       poker: "Póker",
       generala: "Generala",
-      generalaServida: "Generala servida",
       dobleGenerala: "Generala doble",
     }
     return labels[category]
@@ -54,42 +53,56 @@ export default function PlayerTurn({ player, onScoreSubmit }: PlayerTurnProps) {
       <CardHeader>
         <CardTitle className="text-center">Turno de {player.name}</CardTitle>
       </CardHeader>
-      <CardContent className="space-y-4">
-        <div className="space-y-2">
-          <RadioGroup
-            value={selectedCategory || ""}
-            onValueChange={(value) => setSelectedCategory(value as ScoreCategory)}
-          >
-            <div className="grid grid-cols-2 gap-2">
-              {getAvailableCategories().map((category) => (
-                <div key={category} className="flex items-center space-x-2">
-                  <RadioGroupItem value={category} id={category} />
-                  <Label htmlFor={category}>{getCategoryLabel(category)}</Label>
+      <CardContent>
+        <div className="grid grid-cols-2 gap-4">
+          { }
+          <div className="space-y-2">
+            <RadioGroup
+              value={selectedCategory || ""}
+              onValueChange={(value) => {
+                setSelectedCategory(value as ScoreCategory)
+                setSelectedPoints(null)
+              }}
+            >
+              <div className="space-y-2">
+                {getAvailableCategories().map((category) => (
+                  <div key={category} className="flex items-center space-x-2">
+                    <RadioGroupItem value={category} id={category} />
+                    <Label htmlFor={category}>{getCategoryLabel(category)}</Label>
+                  </div>
+                ))}
+              </div>
+            </RadioGroup>
+          </div>
+
+          { }
+          {selectedCategory && (
+            <div className="space-y-2">
+              <RadioGroup
+                value={selectedPoints?.toString() || ""}
+                onValueChange={(value) => setSelectedPoints(Number(value))}
+              >
+                <div className="space-y-2">
+                  {getCategoryOptions(selectedCategory).map((option) => (
+                    <div key={option.value} className="flex items-center space-x-2">
+                      <RadioGroupItem value={option.value.toString()} id={`points-${option.value}`} />
+                      <Label htmlFor={`points-${option.value}`}>{option.label}</Label>
+                    </div>
+                  ))}
                 </div>
-              ))}
+              </RadioGroup>
             </div>
-          </RadioGroup>
+          )}
         </div>
 
-        {selectedCategory && (
-          <div className="space-y-2">
-            <Input
-              id="points"
-              type="number"
-              inputMode="numeric"
-              pattern="[0-9]*"
-              value={points}
-              onChange={(e) => setPoints(e.target.value)}
-              placeholder="Puntos"
-            />
-          </div>
-        )}
-
-        <Button onClick={handleSubmit} disabled={!selectedCategory || !points} className="w-full">
+        <Button
+          onClick={handleSubmit}
+          disabled={selectedCategory === null || selectedPoints === null}
+          className="w-full mt-4"
+        >
           Guardar
         </Button>
       </CardContent>
     </Card>
   )
 }
-
