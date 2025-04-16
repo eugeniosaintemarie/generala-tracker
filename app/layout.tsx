@@ -11,8 +11,8 @@ const inter = Inter({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
   title: "Generala tracker",
-  description: "Una aplicación para seguir puntuaciones en el juego de Generala",
-    generator: 'v0.dev'
+  description: "Una aplicación para seguir puntuaciones en el juego de la Generala",
+    generator: 'esm'
 }
 
 export default function RootLayout({
