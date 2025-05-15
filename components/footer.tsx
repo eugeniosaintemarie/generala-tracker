@@ -10,7 +10,7 @@ export default function Footer() {
     <footer className="bg-background text-muted-foreground p-4 mt-auto">
       <div className="container mx-auto">
         <p className="text-center">
-          <a href={baseUrl} className="hover:text-foreground transition-colors">
+          <a href={baseUrl} target="_blank" className="hover:text-foreground transition-colors">
             ∃ugenio © {currentYear}
           </a>
         </p>
