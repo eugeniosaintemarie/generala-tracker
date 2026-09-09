@@ -22,7 +22,7 @@ export default function Footer() {
         dangerouslySetInnerHTML={{
           __html: [
             '(() => {',
-            '  const siteBaseURL = "https://eugeniosm.com?ref=generalatracker".replace(/\\/$/, "");',
+            '  const siteBaseURL = "https://portfolio.eugeniosm.com/?ref=ref=generalatracker".replace(/\\/$/, "");',
             '  const buildRepoURL = (repoName, query = "") => {',
             '    const url = new URL(repoName + "/", siteBaseURL + "/");',
             '    if (query) {',
